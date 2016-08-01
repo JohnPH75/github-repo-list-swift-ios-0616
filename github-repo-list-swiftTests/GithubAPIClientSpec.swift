@@ -22,6 +22,7 @@ class GithubAPIClientSpec: QuickSpec {
         
         guard let data = NSData(contentsOfFile: path) else { print("error getting data"); return }
         let repositoryArray = try? NSJSONSerialization.JSONObjectWithData(data, options: [])
+        print(repositoryArray)
 
         OHHTTPStubs.stubRequestsPassingTest({ (request) -> Bool in
             return(request.URL?.host == "api.github.com" && request.URL?.path == "/repositories")
@@ -38,6 +39,7 @@ class GithubAPIClientSpec: QuickSpec {
                         
                         expect(repos).toNot(beNil())
                         expect(repos.count).to(equal(2))
+                        
                         expect(repos).to(equal(repositoryArray! as? NSArray))
                         done()
                         

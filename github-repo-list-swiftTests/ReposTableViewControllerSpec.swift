@@ -18,6 +18,7 @@ class ReposTableViewControllerSpec: QuickSpec {
         let tableView = tester.waitForViewWithAccessibilityLabel("tableView") as! UITableView
         let indexPath = NSIndexPath(forRow: 1, inSection: 0)
         let cell = tableView.cellForRowAtIndexPath(indexPath)
+        print(cell)
         
         describe("TableView") {
             it("should have 1 section") {
@@ -25,11 +26,14 @@ class ReposTableViewControllerSpec: QuickSpec {
             }
             it("should have 2 cells") {
                 expect(tableView.numberOfRowsInSection(0)).to(equal(2))
+                
+                
             }
         }
         describe("TableView Cells") {
             it("Should have the correct cells") {
                 expect(cell?.textLabel?.text).to(equal("wycats/merb-core"))
+                
             }
             
         }
